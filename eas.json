@@ -1,0 +1,31 @@
+{
+  "cli": {
+    "version": ">= 16.18.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "simulator": false
+      }
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "ascApiKeyPath": ".credentials/appstore/AuthKey_H584SGF7VH.p8",
+        "ascApiKeyId": "H584SGF7VH",
+        "ascApiKeyIssuerId": "1ee1d370-169a-4c07-a6c0-c773c2ac84fd",
+        "appleTeamId": "PF77VXM3R8"
+      }
+    }
+  }
+}
