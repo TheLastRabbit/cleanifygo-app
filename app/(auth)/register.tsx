@@ -13,6 +13,7 @@ import {
 import { router } from 'expo-router'
 import { useAuth } from '@/lib/auth'
 import type { MarketplaceRole } from '@/types/marketplace'
+import { BrandLogo } from '@/components/BrandLogo'
 
 export default function RegisterScreen() {
   const { signUp } = useAuth()
@@ -43,6 +44,9 @@ export default function RegisterScreen() {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={styles.inner} keyboardShouldPersistTaps="handled">
+        <View style={styles.logoWrap}>
+          <BrandLogo size="lg" showTagline />
+        </View>
         <Text style={styles.title}>Create account</Text>
         <Text style={styles.subtitle}>Join the CleanifyGo marketplace</Text>
 
@@ -123,6 +127,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 24,
     paddingVertical: 60,
+  },
+  logoWrap: {
+    marginBottom: 18,
   },
   title: {
     fontSize: 30,

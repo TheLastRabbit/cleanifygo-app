@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Pressable, ScrollView } from 'react-native'
 import { useAuth } from '@/lib/auth'
 import { router } from 'expo-router'
+import { BrandLogo } from '@/components/BrandLogo'
 
 export default function ProfileScreen() {
   const { session, signOut } = useAuth()
@@ -15,6 +16,10 @@ export default function ProfileScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+      <View style={styles.logoWrap}>
+        <BrandLogo size="md" showTagline />
+      </View>
+
       {/* Avatar */}
       <View style={styles.avatarWrap}>
         <View style={styles.avatar}>
@@ -74,6 +79,9 @@ function InfoRow({ label, value }: { label: string; value: string }) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f8fafc' },
   content: { padding: 24, paddingBottom: 60 },
+  logoWrap: {
+    marginBottom: 16,
+  },
   avatarWrap: {
     alignItems: 'center',
     marginBottom: 28,

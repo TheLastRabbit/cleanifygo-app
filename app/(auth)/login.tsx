@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import {
   ActivityIndicator,
+  Image,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -11,6 +12,7 @@ import {
 } from 'react-native'
 import { router } from 'expo-router'
 import { useAuth } from '@/lib/auth'
+import { BrandLogo } from '@/components/BrandLogo'
 
 export default function LoginScreen() {
   const { signIn } = useAuth()
@@ -39,7 +41,9 @@ export default function LoginScreen() {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <View style={styles.inner}>
-        <Text style={styles.title}>CleanifyGo</Text>
+        <View style={styles.logoWrap}>
+          <BrandLogo size="lg" showTagline />
+        </View>
         <Text style={styles.subtitle}>Sign in to your account</Text>
 
         {error && <Text style={styles.error}>{error}</Text>}
@@ -98,6 +102,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 24,
     paddingBottom: 40,
+  },
+  logoWrap: {
+    marginBottom: 22,
   },
   title: {
     fontSize: 32,

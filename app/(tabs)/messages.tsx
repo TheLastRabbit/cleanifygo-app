@@ -12,6 +12,7 @@ import { router } from 'expo-router'
 import { useAuth } from '@/lib/auth'
 import { fetchConversations } from '@/lib/api'
 import type { MarketplaceConversation } from '@/types/marketplace'
+import { BrandLogo } from '@/components/BrandLogo'
 
 function ConversationRow({
   conversation,
@@ -94,7 +95,13 @@ export default function MessagesScreen() {
   return (
     <FlatList
       style={styles.list}
+      contentContainerStyle={styles.content}
       data={conversations}
+      ListHeaderComponent={
+        <View style={styles.logoWrap}>
+          <BrandLogo size="md" showTagline />
+        </View>
+      }
       keyExtractor={(c) => c.conversationId}
       renderItem={({ item }) => (
         <ConversationRow
@@ -121,6 +128,11 @@ export default function MessagesScreen() {
 
 const styles = StyleSheet.create({
   list: { flex: 1, backgroundColor: '#fff' },
+  content: { paddingTop: 8 },
+  logoWrap: {
+    paddingHorizontal: 16,
+    marginBottom: 10,
+  },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 32 },
   emptyText: { color: '#94a3b8', fontSize: 15 },
   row: {

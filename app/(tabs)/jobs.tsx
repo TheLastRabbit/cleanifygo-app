@@ -11,6 +11,7 @@ import {
 import { useAuth } from '@/lib/auth'
 import { claimJob, fetchJobs } from '@/lib/api'
 import type { MarketplaceJob } from '@/types/marketplace'
+import { BrandLogo } from '@/components/BrandLogo'
 
 const STATUS_COLOR: Record<string, string> = {
   open: '#16a34a',
@@ -104,6 +105,11 @@ export default function JobsScreen() {
       style={styles.list}
       contentContainerStyle={styles.listContent}
       data={jobs}
+      ListHeaderComponent={
+        <View style={styles.logoWrap}>
+          <BrandLogo size="md" showTagline />
+        </View>
+      }
       keyExtractor={(j) => j.id}
       renderItem={({ item }) => (
         <JobCard
@@ -125,6 +131,9 @@ export default function JobsScreen() {
 const styles = StyleSheet.create({
   list: { flex: 1, backgroundColor: '#f8fafc' },
   listContent: { padding: 16, gap: 12 },
+  logoWrap: {
+    marginBottom: 6,
+  },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 32 },
   emptyText: { color: '#94a3b8', fontSize: 15 },
   card: {
